@@ -1,0 +1,13 @@
+#canvas {
+	display: none;
+}
+
+canvas {
+	max-width: 100%;
+}
+
+#video {
+	height: auto;
+	width: 100%;
+    max-width: 100%;
+}
