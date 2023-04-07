@@ -2,7 +2,7 @@
 
 Due to security restrictions implemented by Chrome and other browswers around WASM files, a server is needed to serve the files associated with this project.
 
-## Dependencies
+## Installation guide
 
 - Node >= 14
 
@@ -16,7 +16,7 @@ npm install
 
 To install other dependencies.
 
-## Run
+## Start server
 
 To start up the server, all you need to do is execute the following command:
 
@@ -36,3 +36,9 @@ Then you must add the IP for the device that is running the local server and the
 For example:
 
 `http://192.168.0.24:2222`
+
+## How to change video resolution and other parameters
+
+Open /public/js/core/util.js.
+
+Change return values of the methods to your pleasure.
