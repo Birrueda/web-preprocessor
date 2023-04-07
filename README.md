@@ -1,8 +1,10 @@
-# client-app
+# Web preprocessor
 
-Due to security restrictions implemented by Chrome and other browswers around WASM files, a server is needed to serve the files associated with this project.
+Extract keypoints and descriptors using your broswer.
 
 ## Installation guide
+
+Due to security restrictions implemented by Chrome and other browswers around WASM files, a server is needed to serve the files associated with this project.
 
 - Node >= 14
 
