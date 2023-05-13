@@ -231,7 +231,10 @@ async function captureFrames() {
                 if (frameCount % frame_skip == 0)
                 {
                     frameCount = 0;
+                    let startTime = performance.now();
                     imgPreInstance.preprocess_image();
+                    let preprocessDuration = performance.now() - startTime;
+                    document.getElementById('preprocess-duration').innerText = Math.floor(preprocessDuration) + ' ms';                    
                 }
                 drawOutputImage();
                 // Free allocated memory
