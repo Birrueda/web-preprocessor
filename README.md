@@ -2,9 +2,21 @@
 
 Extract keypoints and descriptors using your broswer.
 
-## Installation guide
+## Running the server
 
 Due to security restrictions implemented by Chrome and other browswers around WASM files, a server is needed to serve the files associated with this project.
+
+### Python Guide
+
+- Python >= 3.8
+
+This repository comes with a python script which uses `http.server` standard library. To run the server, execute:
+
+    python server.py
+
+Server will start up on port 2222. Then, navigate to http://localhost:2222/public/ in order to access the application.
+
+### Node Guide
 
 - Node >= 14
 
@@ -14,17 +26,14 @@ Node comes with npm as a default packet manager.
 
 After installing node, please execute:
 
-npm install
+    npm install
 
-To install other dependencies.
+To install other dependencies. Then, to start up the server, all you need to do is execute the following command:
 
-## Start server
+    npm run start
 
-To start up the server, all you need to do is execute the following command:
 
-`npm run start`
-
-The command will start up the server in the 2222 port.
+Server will start up on port 2222.
 
 ## How to test on mobile
 

@@ -1,4 +1,5 @@
 # Simple HTTP server version
+# When executing this script, navigate to: http://localhost:2222/public/
 from http.server import SimpleHTTPRequestHandler
 import socketserver
 
