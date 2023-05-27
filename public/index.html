@@ -28,10 +28,13 @@
 
 	<!-- WebASM Module import -->
 	<script async src="js/core/main.js" type="text/javascript"></script>	
+	<!-- ORDER MATTERS: index.js must come after main.js and before all the other scrips -->
+	<!-- Otherwise, we won't give time for the WASM Module to load properly -->
+	<script src="index.js" type="text/javascript"></script>	
 	<script src="js/core/util.js" type="text/javascript"></script>	
 	<script src="js/core/capture-frames.js" type="text/javascript"></script>
 	<script src="js/core/image-preprocessor.js" type="text/javascript"></script>
-	<script src="index.js" type="text/javascript"></script>	
+	<script src="js/core/websocket.js" type="text/javascript"></script>
 
 	<!-- WebGl -->
 	<script src="js/core/webgl-utils.js"></script>

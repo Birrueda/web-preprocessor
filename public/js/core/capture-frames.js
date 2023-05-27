@@ -220,6 +220,8 @@ async function captureFrames() {
         // Setups WebGL rendering for output canvas
         setupWebGl();       
 
+        ws_send_serialized_data();
+
         let frameCount = 0;
         const drawingLoop = (timestamp, frame) => {            
             frameCount++;
@@ -233,6 +235,7 @@ async function captureFrames() {
                     frameCount = 0;
                     let startTime = performance.now();
                     imgPreInstance.preprocess_image();
+                    ws_send_serialized_data();
                     let preprocessDuration = performance.now() - startTime;
                     document.getElementById('preprocess-duration').innerText = Math.floor(preprocessDuration) + ' ms';                    
                 }
@@ -258,7 +261,7 @@ async function captureFrames() {
 
 async function drawOutputImage()
 {
-    const outputImage = imgPreInstance.get_output_image();        
+    const outputImage = imgPreInstance.get_output_image();    
     
     if (outputImage)
     {
