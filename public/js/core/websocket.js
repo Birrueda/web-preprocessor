@@ -14,6 +14,7 @@ function ws_connection_opened(event) {
 }
   
 function ws_server_message_callback(event) {
+    // TODO: Switch case with commands from server
     const command = new DataView(event.data).getFloat32(0);
     // console.log("Received command from server: ", command);
     ws_send_serialized_data();

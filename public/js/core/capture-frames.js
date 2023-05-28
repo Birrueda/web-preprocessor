@@ -220,6 +220,7 @@ async function captureFrames() {
         // Setups WebGL rendering for output canvas
         setupWebGl();       
 
+        // Send first batch of data (empty) so the server can start its loop of frame requests
         ws_send_serialized_data();
 
         let frameCount = 0;
