@@ -363,11 +363,11 @@ function createWasm() {
 }
 
 var ASM_CONSTS = {
- 194420: () => {
+ 194404: () => {
   stopCapture();
   showErrorModal();
  },
- 194453: () => {
+ 194437: () => {
   throw new Error("Cant reach server");
  }
 };

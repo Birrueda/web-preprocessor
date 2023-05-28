@@ -235,7 +235,6 @@ async function captureFrames() {
                     frameCount = 0;
                     let startTime = performance.now();
                     imgPreInstance.preprocess_image();
-                    ws_send_serialized_data();
                     let preprocessDuration = performance.now() - startTime;
                     document.getElementById('preprocess-duration').innerText = Math.floor(preprocessDuration) + ' ms';                    
                 }

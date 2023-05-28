@@ -23,6 +23,6 @@ function getHeight() {
 }
 
 function getFrameSkip() {    
-    return 1;
+    return 10;
 }
 
