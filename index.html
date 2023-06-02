@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/index.css">
+	<title>Preprocessor</title>
+</head>
+
+<body>
+	<h2>Video input</h2>
+	<video id="video" autoplay width="640" height="480"></video>
+	<canvas id="input" ></canvas>
+
+	<h2>Output</h2>
+	<canvas id="output" ></canvas>
+	<div>Preprocess duration: <span id="preprocess-duration"></span> ms</div>
+	<div>Input video resolution: <span id="resolution"></span> px</div>
+	
+	<!--<script src="trigger.js" type="text/javascript"></script>-->
+	<script src="index.js" type="text/javascript"></script>
+	<script async src="wasm/preprocessor.js" type="text/javascript"></script><!-- WebASM Module import -->
+</body>
+</html>

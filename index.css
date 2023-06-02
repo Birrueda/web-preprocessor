@@ -1,0 +1,13 @@
+#input {
+	display: none;
+}
+
+canvas {
+	max-width: 100%;
+}
+
+#video {
+	height: auto;
+	width: auto;
+    max-width: 100%;
+}
