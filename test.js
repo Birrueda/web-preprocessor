@@ -1,4 +1,5 @@
-console.log("web-preprocessor server.py index.js");
+// Same as index, with extra code at loop
+console.log("web-preprocessor server.py test.js");
 
 // Singleton of wasm ImagePreprocessor
 var preprocessor;
@@ -15,6 +16,7 @@ var Module = {
 
 // video from camera
 const video = document.getElementById('video');
+const runCheck = document.getElementById('run');
 
 // internal hidden canvas to capture images from video
 const inputCanvas = document.getElementById('input');
@@ -58,6 +60,7 @@ async function setup(){
 }
 
 function loop(){
+    if(!runCheck.checked) return;
     console.log("-------------------------------");
     // Capture image from video and put it in the heap, so wasm can grab it
     const width = video.videoWidth;
@@ -73,25 +76,40 @@ function loop(){
     // Preprocess image on buffer
     try{
         let startTime = performance.now();
-        const features = preprocessor.preprocess(dataOnHeap.byteOffset, width, height);
+        features = preprocessor.preprocess(dataOnHeap.byteOffset, width, height);
         let preprocessDuration = performance.now() - startTime;
         var duration = Math.floor(preprocessDuration);
         durationPlaceholder.innerText = duration;
         durationList.innerText += ", " + duration;
         console.log("features", features);
         console.log("preprocess duration", preprocessDuration);
+
+        n = features.array.length/3;
+        console.log("At:", n*2, n*2/16);
+        var text = "";
+        for(i=0; i<8; i++){
+            text += features.array[n*2+i] + ", ";
+        }
+        console.log("Bytes:", text);
+        dataView = new DataView(features.array.buffer);
+        console.log("Keypoint 0:", dataView.getInt32(n*2, true), dataView.getInt32(n*2+4, true));
+        dataView = new DataView(features.array.buffer, n*2, n);
+        console.log("Keypoint 0:", dataView.getInt32(0, true), dataView.getInt32(4, true));
+        //console.log("Keypoint 0:", dataView.getFloat32(0, true), dataView.getFloat32(4, true));
+        //console.log("Keypoint last:", dataView.getFloat32(n-16, true), dataView.getFloat32(n-16+4, true));
+
     } catch(err) {
-        console.error("error", err);
+        console.log("error", err);
     } finally {
         Module._free(dataPtr);
         console.log("image memory released");
     }
 
     // Show annotated image
-    annotatedImage = preprocessor.getAnnotations();
+    /*annotatedImage = preprocessor.getAnnotations();
     if(annotatedImage){
         outputImageContext.putImageData(new ImageData(new Uint8ClampedArray(annotatedImage.array), annotatedImage.width, annotatedImage.height), 0, 0);
-    }
+    }*/
 }
 
 console.log("index.js finished");
